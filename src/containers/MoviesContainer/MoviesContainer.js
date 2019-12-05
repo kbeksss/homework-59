@@ -12,13 +12,11 @@ class MoviesContainer extends Component {
         ],
         wishList: '',
     };
-
     componentDidMount() {
         if(localStorage.getItem('movies')){
             this.setState({movies: JSON.parse(localStorage.getItem('movies'))});
         }
     }
-
     componentDidUpdate(prevProps, prevState, snapshot) {
         localStorage.setItem('movies', JSON.stringify(this.state.movies));
     }
