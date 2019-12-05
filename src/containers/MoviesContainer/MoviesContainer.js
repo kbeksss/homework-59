@@ -8,19 +8,32 @@ import WatchList from "../../components/Movies/WatchList/WatchList";
 class MoviesContainer extends Component {
     state = {
         movies: [
-            {title: 'The Shawshank Redemption', id: nanoid()},
-            {title: 'Her', id: nanoid()},
-            {title: 'A Beautiful Mind', id: nanoid()},
+
         ],
         wishList: '',
     };
+
+    componentDidMount() {
+        if(localStorage.getItem('movies')){
+            this.setState({movies: JSON.parse(localStorage.getItem('movies'))});
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        localStorage.setItem('movies', JSON.stringify(this.state.movies));
+    }
     changeWishList = (event) => {
         event.preventDefault();
         this.setState({wishList: event.target.value});
     };
     addCurrentWishList = () => {
         const movies = [...this.state.movies];
-        if(movies[movies.length - 1].title !== this.state.wishList){
+        if(this.state.wishList === ''){
+            alert('Your input is empty');
+        } else if(this.state.movies.length === 0){
+            movies.push({title: this.state.wishList, id: nanoid()});
+            this.setState({movies, wishList: ''});
+        }else if (this.state.movies.length !== 0 && movies[movies.length - 1].title !== this.state.wishList){
             movies.push({title: this.state.wishList, id: nanoid()});
             this.setState({movies, wishList: ''});
         } else {

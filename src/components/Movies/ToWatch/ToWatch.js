@@ -1,10 +1,12 @@
 import React from 'react';
+import './ToWatch.css';
+import Button from "../../UI/Button/Button";
 
 const ToWatch = (props) => {
     return (
         <form action="#" className='ToWatch' onSubmit={props.formSubmit}>
             <input type="text" onChange={props.onChange} value={props.valToWatch}/>
-            <button type='submit'>Add</button>
+            <Button type='submit' text='Add to wish list'/>
         </form>
     );
 };
