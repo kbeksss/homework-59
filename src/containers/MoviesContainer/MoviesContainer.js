@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import './MoviesContainer.css';
+
 import ToWatch from "../../components/Movies/ToWatch/ToWatch";
 import nanoid from 'nanoid';
 import WatchList from "../../components/Movies/WatchList/WatchList";
@@ -36,6 +38,12 @@ class MoviesContainer extends Component {
             return {...prevState, movies}
         });
     };
+    removeFilm = id => {
+        const movies = [...this.state.movies];
+        const index = movies.findIndex(film => film.id === id);
+        movies.splice(index, 1);
+        this.setState({movies});
+    };
     render() {
         return (
             <div className='MoviesContainer'>
@@ -47,6 +55,7 @@ class MoviesContainer extends Component {
                 <WatchList
                     movies={this.state.movies}
                     changeTitle={this.changeTitle}
+                    removeFilm={this.removeFilm}
                 />
             </div>
         );

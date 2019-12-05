@@ -11,7 +11,8 @@ const WatchList = (props) => {
                     <Movie
                         key={movie.id}
                         valTitle={movie.title}
-                        changeTitle={(event) => this.props.changeTitle(event, movie.id)}
+                        changeTitle={(event) => props.changeTitle(event, movie.id)}
+                        remove={() => props.removeFilm(movie.id)}
                     />
                 ))}
             </ul>

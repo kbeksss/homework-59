@@ -5,7 +5,6 @@ class Movie extends Component {
         return nextProps.valTitle !== this.props.valTitle;
     }
     render() {
-        console.log('[Movie] render');
         return (
             <li className='Movie'>
                 <input type="text" onChange={this.props.changeTitle} value={this.props.valTitle}/>
