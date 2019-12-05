@@ -1,3 +1,6 @@
 .JokesContainer{
+    padding: 20px 5px;
     width: 50%;
+    border-radius: 10px;
+    border: 1px solid #ff6616;
 }
